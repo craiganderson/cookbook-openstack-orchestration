@@ -30,6 +30,8 @@ platform_options['heat_engine_packages'].each do |pkg|
   end
 end
 
+package "heat-engine"
+
 service 'heat_engine' do
   service_name platform_options['heat_engine_service']
   supports status: true, restart: true

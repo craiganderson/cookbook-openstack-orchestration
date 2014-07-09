@@ -30,6 +30,8 @@ platform_options['heat_api_packages'].each do |pkg|
   end
 end
 
+package 'heat-api'
+
 service 'heat-api' do
   service_name platform_options['heat_api_service']
   supports status: true, restart: true
@@ -43,7 +45,7 @@ template '/etc/heat/api-paste.ini' do
   group  node['openstack']['orchestration']['group']
   owner  node['openstack']['orchestration']['user']
   mode   00644
-  notifies :restart, 'service[heat-api]', :immediately
+  notifies :restart, 'service[heat-api]', :delayed
 end
 
 template '/etc/heat/policy.json' do
@@ -51,5 +53,5 @@ template '/etc/heat/policy.json' do
   group  node['openstack']['orchestration']['group']
   owner  node['openstack']['orchestration']['user']
   mode   00644
-  notifies :restart, 'service[heat-api]', :immediately
+  notifies :restart, 'service[heat-api]', :delayed
 end

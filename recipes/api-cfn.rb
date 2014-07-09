@@ -45,7 +45,7 @@ template '/etc/heat/api-paste.ini' do
   group  node['openstack']['orchestration']['group']
   owner  node['openstack']['orchestration']['user']
   mode   00644
-  notifies :restart, 'service[heat-api-cfn]', :immediately
+  notifies :restart, 'service[heat-api-cfn]', :delayed
 end
 
 template '/etc/heat/policy.json' do
@@ -53,5 +53,5 @@ template '/etc/heat/policy.json' do
   group  node['openstack']['orchestration']['group']
   owner  node['openstack']['orchestration']['user']
   mode   00644
-  notifies :restart, 'service[heat-api-cfn]', :immediately
+  notifies :restart, 'service[heat-api-cfn]', :delayed
 end
