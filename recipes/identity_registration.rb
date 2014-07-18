@@ -58,9 +58,9 @@ openstack_identity_register 'Register Heat Orchestration Endpoint' do
   bootstrap_token token
   service_type 'orchestration'
   endpoint_region region
-  endpoint_adminurl heat_endpoint.to_s
-  endpoint_internalurl heat_endpoint.to_s
-  endpoint_publicurl heat_endpoint.to_s
+  endpoint_adminurl heat_endpoint.to_s.gsub('%25', '%')
+  endpoint_internalurl heat_endpoint.to_s.gsub('%25', '%')
+  endpoint_publicurl heat_endpoint.to_s.gsub('%25', '%')
 
   action :create_endpoint
 end
