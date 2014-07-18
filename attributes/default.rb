@@ -24,6 +24,10 @@ default['openstack']['orchestration']['custom_template_banner'] = '
 # Do not edit, changes will be overwritten
 '
 
+default['openstack']['endpoints']['orchestration-api-internal']['uri'] = node['openstack']['endpoints']['orchestration-api']['uri']
+default['openstack']['endpoints']['orchestration-api-cfn-internal']['uri'] = node['openstack']['endpoints']['orchestration-api-cfn-internal']['uri']
+default['openstack']['endpoints']['orchestration-api-cloudwatch-internal']['uri'] = node['openstack']['endpoints']['orchestration-api-cloudwatch-internal']['uri']
+
 default['openstack']['orchestration']['verbose'] = 'False'
 default['openstack']['orchestration']['debug'] = 'False'
 # This is the name of the Chef role that will install the Keystone Service API

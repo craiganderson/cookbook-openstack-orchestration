@@ -30,7 +30,9 @@ token = secret 'secrets', 'openstack_identity_bootstrap_token'
 auth_url = ::URI.decode identity_admin_endpoint.to_s
 
 heat_endpoint = endpoint 'orchestration-api'
+heat_endpoint_internal = endpoint 'orchestration-api-internal'
 heat_cfn_endpoint = endpoint 'orchestration-api-cfn'
+heat_cfn_endpoint_internal = endpoint 'orchestration-api-cfn-internal'
 
 service_pass = get_password 'service', 'openstack-orchestration'
 service_tenant_name = node['openstack']['orchestration']['service_tenant_name']
@@ -58,8 +60,8 @@ openstack_identity_register 'Register Heat Orchestration Endpoint' do
   bootstrap_token token
   service_type 'orchestration'
   endpoint_region region
-  endpoint_adminurl heat_endpoint.to_s.gsub('%25', '%')
-  endpoint_internalurl heat_endpoint.to_s.gsub('%25', '%')
+  endpoint_adminurl heat_endpoint_internal.to_s.gsub('%25', '%')
+  endpoint_internalurl heat_endpoint_internal.to_s.gsub('%25', '%')
   endpoint_publicurl heat_endpoint.to_s.gsub('%25', '%')
 
   action :create_endpoint
@@ -84,8 +86,8 @@ if node.run_list.include?('openstack-orchestration::api-cfn')
     bootstrap_token token
     service_type 'cloudformation'
     endpoint_region region
-    endpoint_adminurl heat_cfn_endpoint.to_s
-    endpoint_internalurl heat_cfn_endpoint.to_s
+    endpoint_adminurl heat_cfn_endpoint_internal.to_s
+    endpoint_internalurl heat_cfn_endpoint_internal.to_s
     endpoint_publicurl heat_cfn_endpoint.to_s
 
     action :create_endpoint
