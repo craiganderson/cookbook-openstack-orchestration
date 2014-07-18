@@ -54,11 +54,11 @@ sql_connection = db_uri('orchestration', db_user, db_pass)
 identity_endpoint = endpoint 'identity-api'
 identity_admin_endpoint = endpoint 'identity-admin'
 heat_api_bind = endpoint 'orchestration-api-bind'
-heat_api_endpoint = endpoint 'orchestration-api'
+heat_api_endpoint_internal = endpoint 'orchestration-api-internal'
 heat_api_cfn_bind = endpoint 'orchestration-api-cfn-bind'
-heat_api_cfn_endpoint = endpoint 'orchestration-api-cfn'
+heat_api_cfn_endpoint_internal = endpoint 'orchestration-api-cfn-internal'
 heat_api_cloudwatch_bind = endpoint 'orchestration-api-cloudwatch-bind'
-heat_api_cloudwatch_endpoint = endpoint 'orchestration-api-cloudwatch'
+heat_api_cloudwatch_endpoint_internal = endpoint 'orchestration-api-cloudwatch-internal'
 
 service_pass = get_password 'service', 'openstack-orchestration'
 
@@ -109,11 +109,11 @@ template '/etc/heat/heat.conf' do
     service_pass: service_pass,
     sql_connection: sql_connection,
     heat_api_bind: heat_api_bind,
-    heat_api_endpoint: heat_api_endpoint,
+    heat_api_endpoint: heat_api_endpoint_internal,
     heat_api_cfn_bind: heat_api_cfn_bind,
-    heat_api_cfn_endpoint: heat_api_cfn_endpoint,
+    heat_api_cfn_endpoint: heat_api_cfn_endpoint_internal,
     heat_api_cloudwatch_bind: heat_api_cloudwatch_bind,
-    heat_api_cloudwatch_endpoint: heat_api_cloudwatch_endpoint
+    heat_api_cloudwatch_endpoint: heat_api_cloudwatch_endpoint_internal
   )
 end
 
