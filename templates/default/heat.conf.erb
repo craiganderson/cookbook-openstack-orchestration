@@ -718,14 +718,14 @@ bind_port=<%= @heat_api_cfn_bind.port %>
 
 # Host providing the admin Identity API endpoint (string
 # value)
-auth_host=<%= @identity_admin_endpoint.host %>
+auth_host=<%= @identity_internal_endpoint.host %>
 
 # Port of the admin Identity API endpoint (integer value)
-auth_port=<%= @identity_admin_endpoint.port %>
+auth_port=<%= @identity_internal_endpoint.port %>
 
 # Protocol of the admin Identity API endpoint(http or https)
 # (string value)
-auth_protocol=<%= @identity_admin_endpoint.scheme %>
+auth_protocol=<%= @identity_internal_endpoint.scheme %>
 
 # Complete public Identity API endpoint (string value)
 auth_uri=<%= @auth_uri %>
