@@ -5,6 +5,10 @@
 # Options defined in heat.common.config
 #
 
+# Default region name used to get services endpoints. (string
+# value)
+region_name_for_services=<%= node['openstack']['region'] %>
+
 sql_connection=<%= @sql_connection %>
 
 # The default user for new instances (string value)
